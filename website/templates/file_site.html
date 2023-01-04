@@ -1,0 +1,101 @@
+{% extends "base.html" %} 
+{% block title %}File Site{% endblock %} 
+{% block content%}
+
+
+<h3 align="center">Upload to File Sharing</h3>
+<form method="POST">
+
+  <div class="form-group">
+    <label for="owner">File Owner (Name)</label>
+    <input
+      type="text"
+      class="form-control"
+      id="owner"
+      name="owner"
+      placeholder="Enter owner of the file"
+    />
+    <small id="emailHelp" class="form-text text-muted">If you are uploading files on behalf of somone else, make sure to write both names.</small>
+  </div>
+  <div class="form-group">
+    <label for="dep">Select department:</label>
+    <select id="dep" name="dep">
+      <option value="Ansættelsesret">Ansættelsesret</option>
+      <option value="Corporate & Commercial">Corporate & Commercial</option>
+      <option value="Energi & Forsyning">Energi & Forsyning</option>
+      <option value="Retsager & Voldgift">Retsager & Voldgift</option>
+      <option value="Fast Ejendom & Enterprise">Fast Ejendom & Enterprise</option>
+      <option value="Forsikring & Erstatning">Forsikring & Erstatning</option>
+      <option value="Intellectual Property & Life Science">Intellectual Property & Life Science</option>
+      <option value="IT & Teknologi">IT & Teknologi</option>
+      <option value="Konkurrenceret">Konkurrenceret</option>
+      <option value="M&A">M&A</option>
+      <option value="Rekonstruktion & Insolvens">Rekonstruktion & Insolvens</option>
+
+    </select>
+  </div>
+  <form method="POST">
+
+    <div class="form-group">
+      <label for="file">Choose file</label>
+      <input
+        type="file"
+        class="form-control"
+        id="file"
+        name="file"
+        placeholder="Insert file"
+      />
+    </div>
+  </form>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Private</label>
+  </div>
+  <div class="form-group">
+    <label for="password1">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      name="password1"
+      placeholder="Enter password (If private is ✔)"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password2">Password (Confirm)</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      name="password2"
+      placeholder="Confirm password"
+    />
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck2">
+    <label class="form-check-label" for="exampleCheck2">Have you scanned the files for virusses before uploading? 👾</label>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<!-- 
+<h3>Upload a new file:</h3>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label for="name">File Name:</label>
+  <br>
+  <input type="text" id="name" name="name">
+
+  <label for="file"></label>
+  <br>
+  <input type="file" id="file" name="file">
+  <br>
+  <br>
+  <input type="submit" class="btn btn-success" value="Upload">
+</form>
+
+ -->
+
+{% endblock %}

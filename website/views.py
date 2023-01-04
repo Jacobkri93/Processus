@@ -1,8 +1,15 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, Flask
+from flask_wtf import FlaskForm
+from wtforms import FileField, SubmitField
 from flask_login import login_required, current_user
-from .models import Note
+from werkzeug.utils import secure_filename
+import os
+from .models import Note, File
 from . import db
 import json
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
 
 views = Blueprint('views', __name__)
 
@@ -22,6 +29,25 @@ def home():
             flash('Note added!', category='success')
 
     return render_template("home.html", user=current_user)
+
+
+@views.route('/file_site', methods=['GET','POST'])
+@login_required
+def file_site():
+    # Retrieve the file object from the request
+    # file = request.files.get('file')
+    # if file:
+    #     # Read the file contents
+    #     file_contents = file.read()
+
+    #     # Create a new File record
+    #     record = File(name=file.filename, data=file_contents)
+
+    #     # Save the record to the database
+        
+    #     db.session.add(record)
+    #     db.session.commit()
+        return render_template("file_site.html", user=current_user)
 
 
 @views.route('/delete-note', methods=['POST'])

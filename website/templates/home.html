@@ -1,6 +1,33 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Notes</h1>
+<h3>Welcome to Processus {{user.first_name}} </h3>
+<h4>Account info: 
+  <br>
+  Email: {{user.email}}
+  <br>
+  <!-- Hashed password - KUN til testmiljø, ville aldrig vises hverken i hash eller anden form i produktion -->
+  Password: (Expires in 2 months and 14 days) {{user.password}}
+</h4>
+<h5 align="center">Start writing your process:</h5>
+
+<!-- <ul class="list-group list-group-flush" id="notes">
+  {% for note in user.notes %}
+  <li class="list-group-item">
+    {{ note.data }}
+    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul> -->
+<form method="POST">
+  <textarea name="note" id="note" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-success">Add Process to wall</button>
+  </div>
+</form>
+
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
   <li class="list-group-item">
@@ -11,11 +38,5 @@
   </li>
   {% endfor %}
 </ul>
-<form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
-  </div>
-</form>
+
 {% endblock %}
